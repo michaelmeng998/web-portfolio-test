@@ -16,7 +16,7 @@
     @include easeOut;
   }
 
-  //Rotate into X with Menu liNES
+  //Rotate into X with Menu lines
   //ampersand.close means styling button when has class of close
   &.close {
     transform: rotate(180deg);
@@ -88,7 +88,9 @@
     .portrait {
       width: 250px;
       height: 250px;
-      background: url("../img/portrait.jpg");
+      background: url("../img/michael-portrait.jpg");
+      background-size: cover;
+      background-position: center;
       border-radius: 50%;
       border: solid 3px $secondary-color;
     }

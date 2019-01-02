@@ -1,14 +1,17 @@
 @import "config";
 
 //include variables before importing menu, this way can access variables in the partials
-$primary-color: #444;
-$secondary-color: orange;
+$primary-color: #1f2833;
+$secondary-color: #f28c38;
 
 @import "menu";
 
 $show-home-image: true;
-$home-image: url(../img/background.jpg);
-$background-opacity: 0.9;
+//$home-image: url(../img/background2.jpg);
+$home-image: url(../img/background5.jpg);
+$home-image-position: relative;
+$home-image-size: 100% 100vh;
+$background-opacity: 0;
 //function "mixin" called easeOut
 
 * {
@@ -27,20 +30,30 @@ body {
 
 // Headings
 
+.menu-btn {
+  padding: 0rem 1rem;
+}
+
 h1,
 h2,
 h3 {
-  margin: 0;
-  font-weight: 400;
+  font-weight: 600;
   //ampersand helps allocate h headings
   &.lg-heading {
-    font-size: 6rem;
+    font-size: 4rem;
+    display: inline;
   }
   &.sm-heading {
     margin-bottom: 2rem;
     padding: 0.2rem 1rem;
-    background: rgba(lighten($primary-color, 2), 0.5);
   }
+}
+
+.FirstName {
+  font-size: 10rem;
+  text-decoration: overline $secondary-color;
+  //display: inline;
+  text-align: center;
 }
 
 a {
@@ -55,8 +68,19 @@ header {
   width: 100%;
 }
 
-.text-secondary {
+.text-secondary,
+.LastName,
+.line,
+.text-secondary2 {
   color: $secondary-color;
+}
+
+.title {
+  font-size: 1.75rem;
+  text-align: center;
+  margin-top: 5rem;
+  position: relative;
+  font-weight: 800;
 }
 
 main {
@@ -66,10 +90,15 @@ main {
   min-height: calc(100vh - 60px);
 
   .icons {
-    margin-top: 1rem;
+    margin-top: 680px;
+    //margin-top: 0.5rem;
+    text-align: center;
+    //margin-top: 42%;
+    //margin-left: 46%;
+    position: relative;
 
     a {
-      padding: 0.4rem;
+      padding: 0.5rem;
 
       &:hover {
         color: $secondary-color;
@@ -88,13 +117,17 @@ main {
 
 .about-info {
   display: grid;
-  grid-gap: 30px;
+  grid-gap: 25px;
   grid-template-areas:
     "bioimage bio bio"
-    "job1 job2 job3";
+    "skill skill skill"
+    "skill1 skill2 skill3"
+    "job1 job2 job3"
+    "job4 null null";
   grid-template-columns: repeat(3, 1fr);
 
   .bio-image {
+    height: 250px;
     grid-area: bioimage;
     margin: auto;
     border-radius: 50%;
@@ -104,6 +137,43 @@ main {
   .bio {
     grid-area: bio;
     font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .text-secondary-highlights1 {
+    text-decoration: underline $secondary-color;
+    color: $secondary-color;
+    font-weight: 600;
+  }
+  .text-secondary-highlights2 {
+    color: $secondary-color;
+  }
+
+  .skillset {
+    grid-area: skill;
+    font-size: 1.5rem;
+    color: $secondary-color;
+    font-weight: 800;
+  }
+
+  .skill-descrp {
+    font-size: 1.5rem;
+  }
+
+  .skill1 {
+    grid-area: skill1;
+  }
+  .skill2 {
+    grid-area: skill2;
+  }
+  .skill3 {
+    grid-area: skill3;
+  }
+
+  .skill-heading {
+    color: $secondary-color;
+    font-size: 1.5rem;
+    font-weight: 800;
   }
 
   .job-1 {
@@ -115,6 +185,9 @@ main {
   .job-3 {
     grid-area: job3;
   }
+  .job-4 {
+    grid-area: job4;
+  }
 
   .job {
     background: lighten($primary-color, 5);
@@ -124,14 +197,20 @@ main {
 }
 
 //Work/project
+
 .project {
   display: grid;
   grid-gap: 0.7rem;
+  grid-row-gap: 0.7rem;
   grid-template-columns: repeat(3, 1fr);
 
   img {
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
     border: 3px #fff solid;
+    //display: inline;
+    break-inside: avoid;
 
     &:hover {
       opacity: 0.5;
@@ -139,6 +218,45 @@ main {
       @include easeOut;
     }
   }
+}
+.project1 {
+  display: grid;
+  grid-column-gap: 0.7rem;
+  grid-row-gap: 0.7rem;
+
+  img {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border: 3px #fff solid;
+    //display: inline;
+
+    &:hover {
+      opacity: 0.5;
+      border-color: $secondary-color;
+      @include easeOut;
+    }
+  }
+}
+
+article {
+  column-count: 3;
+  break-inside: avoid;
+  padding: 1rem;
+  column-gap: 2rem;
+}
+
+//.line {
+//  height: 1.75rem;
+//}
+
+.items {
+  break-inside: avoid;
+}
+
+.title {
+  position: relative;
+  text-align: left;
 }
 
 //Contact Page
@@ -151,7 +269,7 @@ main {
 
   div {
     font-size: 2rem;
-    border: 3px #fff solid;
+    border: 4px #fff solid;
     padding: 1.5rem 2.5rem;
     margin-bottom: 3rem;
     @include easeOut;
@@ -168,9 +286,10 @@ main {
 }
 
 //Button Styles
+
 .btn {
   display: block;
-  padding: 0.5rem 1rem;
+  //padding: 0.5rem 1rem;
   border: 0;
   margin-bottom: 0.3rem;
   &:hover {
@@ -183,6 +302,7 @@ main {
   @extend .btn;
   background: darken($primary-color, 50);
   color: #fff;
+  margin-bottom: 2rem;
 }
 
 .btn-light {
